@@ -1,0 +1,65 @@
+@import '../App.scss';
+
+.article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .article_header {
+    border-bottom: $border;
+    height: 2rem;
+    line-height: 2rem;
+    // desktop font 16px
+    // mobile font 32px
+  }
+  .article_content {
+    display: flex;
+    flex-direction: column;
+  }
+  .article_footer {
+    height: 2rem;
+    line-height: 2rem;
+
+    border-top: $border;
+  }
+  & > * {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.article_content {
+  .post {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    &:not(:last-child) {
+      border-bottom: $border;
+    }
+  }
+  .content_box {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: $border;
+    .content {
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+    .content-textarea {
+      height: 10rem;
+    }
+  }
+}
+
+.text-btn {
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  &:hover {
+    background-color: darken($background-color, $amount: 10);
+  }
+}
