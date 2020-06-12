@@ -35,6 +35,9 @@
     &:not(:last-child) {
       border-bottom: $border;
     }
+    input {
+      width: 80%;
+    }
   }
   .content_box {
     text-align: left;
@@ -42,10 +45,10 @@
     border-bottom: $border;
     .content {
       margin-bottom: 1rem;
-      width: 100%;
+      width: 99%;
     }
     .content-textarea {
-      height: 10rem;
+      height: 9rem;
     }
   }
 }

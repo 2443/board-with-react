@@ -22,22 +22,26 @@ class InputPost extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className='article_content'>
+        <div className='post'>
           <input
+            className='title'
             name='title'
             onChange={this.handleChange}
             value={this.state.title}
           />
         </div>
-        <div>
-          <input
-            name='content'
-            onChange={this.handleChange}
-            value={this.state.content}
-          />
+        <div className='content_box'>
+          <div className='content-box'>
+            <input
+              className='content content-textarea'
+              name='content'
+              onChange={this.handleChange}
+              value={this.state.content}
+            />
+          </div>
+          <button onClick={this.handleClick}>저장</button>
         </div>
-        <button onClick={this.handleClick}>저장</button>
       </div>
     );
   }
