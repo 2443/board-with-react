@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import InputPost from './ArticleCompnont/InputPost';
 import PostList from './ArticleCompnont/PostList';
 import './Article.scss';
+import { Pagenation } from './ArticleCompnont/Pagenation';
 import postsJson from './posts.json';
 class Article extends Component {
   state = {
     posts: postsJson.posts,
     writing: false,
     keyword: '',
+    page: 1,
   };
   id = 35;
   handleCreate = (data) => {
@@ -56,10 +58,13 @@ class Article extends Component {
   };
 
   render() {
-    const { writing, posts, keyword } = this.state;
+    const { writing, posts, keyword, page } = this.state;
     const filteredPosts = posts.filter(
       (post) => post.title.indexOf(keyword) > -1
     );
+    const start = (page - 1) * 10;
+    const end = start + 10;
+    const viewPosts = filteredPosts.slice(start, end);
     return (
       <div className='article'>
         {writing ? (
@@ -77,12 +82,14 @@ class Article extends Component {
               <button onClick={this.handleToggleWriting}>글쓰기</button>
             </div>
             <PostList
-              posts={filteredPosts}
+              posts={viewPosts}
               onRemove={this.handleRemove}
               onUpdate={this.handleUpdate}
               onView={this.handleView}
             />
-            <div className='article_footer'>1 2 3 4 5</div>
+            <div className='article_footer'>
+              <Pagenation posts={filteredPosts} onClick={this.handleChange} />
+            </div>
           </>
         )}
       </div>
