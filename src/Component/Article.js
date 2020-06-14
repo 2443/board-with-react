@@ -10,6 +10,7 @@ class Article extends Component {
     writing: false,
     keyword: '',
     page: 1,
+    nowView: 0,
   };
   id = 35;
   handleCreate = (data) => {
@@ -49,11 +50,18 @@ class Article extends Component {
   };
 
   handleView = (id, view) => {
-    const { posts } = this.state;
+    const { posts, nowView } = this.state;
     this.setState({
-      posts: posts.map((post) =>
-        post.id === id ? { ...post, view: !view } : { ...post, view: false }
-      ),
+      posts: posts.map((post) => {
+        if (post.id === id) {
+          return { ...post, view: !view };
+        } else if (post.id === nowView) {
+          return { ...post, view: false };
+        } else {
+          return post;
+        }
+      }),
+      nowView: id,
     });
   };
 

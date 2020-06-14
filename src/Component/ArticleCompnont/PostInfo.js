@@ -44,17 +44,21 @@ class PostInfo extends Component {
     if (this.state !== nextState) {
       return true;
     }
-    return this.props.post !== nextProps;
+    // console.log(this.props.post);
+    // console.log(nextProps.post);
+    // console.log(this.props.post !== nextProps.post);
+    return this.props.post !== nextProps.post;
   }
 
   render() {
     const { editing } = this.state;
-    const { title, createDate, content, view = false } = this.props.post;
+    const { title, createDate, content, view } = this.props.post;
+    console.log('rendering!');
     return (
       <>
         {editing ? (
           <>
-            <div className='post'>
+            <div className={`post${view && ' selected'}`}>
               <input
                 name='title'
                 onChange={this.handleChange}
@@ -79,7 +83,10 @@ class PostInfo extends Component {
           </>
         ) : (
           <>
-            <button onClick={this.toggleContent} className='post text-btn'>
+            <button
+              onClick={this.toggleContent}
+              className={`post text-btn ${view && ' selected'}`}
+            >
               <span>{title}</span>
               <span>{createDate}</span>
             </button>

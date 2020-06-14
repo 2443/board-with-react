@@ -49,6 +49,9 @@
     .content-textarea {
       height: 9rem;
     }
+    button {
+      background-color: inherit;
+    }
   }
 }
 
@@ -70,4 +73,8 @@
   &:hover {
     background-color: darken($background-color, $amount: 10);
   }
+}
+
+.selected {
+  background-color: darken($background-color, $amount: 10);
 }

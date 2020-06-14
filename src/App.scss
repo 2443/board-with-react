@@ -136,8 +136,11 @@ body,
 
 html {
   // font-size: 32px;
+  background-color: $background-color;
 }
-
+html * {
+  color: $border-color;
+}
 #root {
   display: flex;
   justify-content: center;
