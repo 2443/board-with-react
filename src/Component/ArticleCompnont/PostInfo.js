@@ -10,7 +10,8 @@ class PostInfo extends Component {
 
   toggleContent = () => {
     const { onView, post } = this.props;
-    onView(post.id, post.view && false);
+    console.log(post);
+    onView(post.id, post.view || false);
   };
 
   handleChange = (e) => {
