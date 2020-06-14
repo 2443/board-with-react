@@ -40,6 +40,12 @@ class Article extends Component {
     });
   };
 
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
   handleView = (id, view) => {
     const { posts } = this.state;
     this.setState({
@@ -50,7 +56,10 @@ class Article extends Component {
   };
 
   render() {
-    const { writing, posts } = this.state;
+    const { writing, posts, keyword } = this.state;
+    const filteredPosts = posts.filter(
+      (post) => post.title.indexOf(keyword) > -1
+    );
     return (
       <div className='article'>
         {writing ? (
@@ -60,10 +69,15 @@ class Article extends Component {
         ) : (
           <>
             <div className='article_header'>
+              <input
+                name='keyword'
+                onChange={this.handleChange}
+                value={keyword}
+              />
               <button onClick={this.handleToggleWriting}>글쓰기</button>
             </div>
             <PostList
-              posts={posts}
+              posts={filteredPosts}
               onRemove={this.handleRemove}
               onUpdate={this.handleUpdate}
               onView={this.handleView}
