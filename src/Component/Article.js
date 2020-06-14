@@ -2,34 +2,14 @@ import React, { Component } from 'react';
 import InputPost from './ArticleCompnont/InputPost';
 import PostList from './ArticleCompnont/PostList';
 import './Article.scss';
+import postsJson from './posts.json';
 class Article extends Component {
   state = {
-    posts: [
-      {
-        content: '내용11',
-        createDate: '20/06/22 11:57',
-        id: 10,
-        title: '제목11',
-      },
-      {
-        content: '내용10',
-        createDate: '20/06/21 11:57',
-        id: 9,
-        title: '제목10',
-      },
-      { content: '내용9', createDate: '20/06/20 11:57', id: 8, title: '제목9' },
-      { content: '내용8', createDate: '20/06/19 11:57', id: 7, title: '제목8' },
-      { content: '내용7', createDate: '20/06/18 11:57', id: 6, title: '제목7' },
-      { content: '내용6', createDate: '20/06/17 11:57', id: 5, title: '제목6' },
-      { content: '내용5', createDate: '20/06/16 11:57', id: 4, title: '제목5' },
-      { content: '내용4', createDate: '20/06/15 11:57', id: 3, title: '제목4' },
-      { content: '내용3', createDate: '20/06/14 11:57', id: 2, title: '제목3' },
-      { content: '내용2', createDate: '20/06/13 11:57', id: 1, title: '제목2' },
-      { content: '내용1', createDate: '20/06/12 11:57', id: 0, title: '제목1' },
-    ],
+    posts: postsJson.posts,
     writing: false,
+    keyword: '',
   };
-  id = 11;
+  id = 35;
   handleCreate = (data) => {
     const { posts } = this.state;
     this.setState({
